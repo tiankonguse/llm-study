@@ -1,18 +1,3 @@
-# llm-study
-
-
-## 下载模型
-
-```bash
-ollama run hf.co/lmstudio-community/DeepSeek-R1-Distill-Qwen-1.5B-GGUF:Q3_K_L
-vllm serve "lmstudio-community/DeepSeek-R1-Distill-Qwen-1.5B-GGUF"
-llama-cli -hf lmstudio-community/DeepSeek-R1-Distill-Qwen-1.5B-GGUF
-
-cd ~/models
-huggingface-cli download  lmstudio-community/DeepSeek-R1-Distill-Qwen-1.5B-GGUF --local-dir DeepSeek-R1-Distill-Qwen-1.5B-GGUF
-```
-
-
 ## 文件格式
 
 ### .safetensors 文件

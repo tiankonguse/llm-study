@@ -1,0 +1,15 @@
+langchain                # 基础包
+langchain-groq           # groq 包
+langchain-openai         # openai 包
+langchain-ollama         # ollama 包
+langchain-community      # 社区包
+langchain-huggingface    # huggingface 包
+dashscope                # 阿里巴巴的通义千问包 
+openai                   # openapi 接口包 
+pypdf                    # PDF 包, 用于读取PDF文件
+sentence-transformers    # 文本相似度包, 用于计算文本相似度
+chromadb                 # 向量数据库包, 用于存储向量数据
+tiktoken                 # 分词包, 用于将文本分割成单词
+langchain-core           # 核心包, 用于调用核心模块
+langchain-chroma         # chromadb 包, 用于存储向量数据
+langchain-mongodb        # mongodb 包, 用于存储向量数据
