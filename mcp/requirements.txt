@@ -1,0 +1,5 @@
+mcp[cli]
+httpx
+mcp
+anthropic
+python-dotenv
