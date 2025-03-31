@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Climb Wall</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="top-grid-container">
+        <span class="buttons-group">
+            <button id="load-image">上传一面墙</button>
+        </span>
+        <span class="buttons-group">
+            <button id="inference">提取</button>
+            <button id="undo">Undo</button>
+            <button id="clear">Clear</button>
+        </span>
+        <span id="image-name" ></span>
+        <input type="range" id="brush-size-slider" min="5" max="200" value="30" style="display: none;"/>
+    </div>
+
+    <div class="container">
+        <input type="file" id="input-image" accept="image/*" style="display:none">
+        <div id="container-walls">
+            <div id="container-walls-top">墙列表</div>
+            <div id="container-walls-list">
+                <div class="container-wall-unit"> 
+                    <a href="/wall?id=123">
+                        <span class="container-wall-unit-date"> 2025-03</span>
+                        <span class="container-wall-unit-name"> 黑练墙</span>
+                        <span class="container-wall-unit-user"> 柚子</span>
+                    </a>
+                </div>
+                <div class="container-wall-unit"> 
+                    <a href="/wall?id=456">
+                        <span class="container-wall-unit-date"> 2025-02</span>
+                        <span class="container-wall-unit-name"> 黑练墙</span>
+                        <span class="container-wall-unit-user"> 柚子</span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+        <div id="image-container" style="position: relative;">
+            <img id="preview" src="#" alt="your image">
+            <canvas id="image-canvas"></canvas>
+            <canvas id="brush-preview-canvas" style="position:absolute; pointer-events:none;"></canvas>
+        </div>
+    </div>
+    <canvas id="default-preview-canvas" width="800px" height="700px" style="display: none;"></canvas>
+
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='canvas.js') }}"></script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+segment_anything
+flask
+flask_cors
+argparse
+torch
+numpy
+torchvision
+numpy
+opencv-python

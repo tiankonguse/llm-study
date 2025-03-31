@@ -1,0 +1,343 @@
+#preview {
+    /* max-width: 1650px;
+    max-height: 750px; */
+    width: auto;
+    cursor: crosshair;
+}
+
+#zoom-container {
+    position: absolute;
+    overflow: hidden;
+    display: none;
+    width: 250px;
+    height: 250px;
+    z-index: 10;
+    pointer-events: none;
+    border: 2px solid #fff;
+}
+
+#zoom-image {
+    position: absolute;
+}
+
+#image-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    /* border: 2px solid #4CAF50; */
+}
+
+#image-container {
+    width: 800px;
+    height: 800px;
+    position: relative;
+    overflow: scroll;
+    display: flex;
+    /* padding: 10px; */
+}
+/* For Chrome, Edge, and Safari */
+#image-container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #333;
+}
+#image-container::-webkit-scrollbar-thumb {
+    background-color: #777;
+    border-radius: 4px;
+}
+#image-container::-webkit-scrollbar-corner {
+    background-color: #333;
+}
+
+.crosshair {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: 20;
+    pointer-events: none;
+}
+
+.crosshair-line {
+    position: absolute;
+    background-color: #f1c40f;
+    pointer-events: none;
+}
+
+.crosshair-horizontal {
+    width: 10%;
+    height: 2px;
+    top: 50%;
+    left: 45%;
+}
+
+.crosshair-vertical {
+    width: 2px;
+    height: 10%;
+    left: 50%;
+    top: 45%;
+}
+
+#thumbnail-container {
+    display: flex;
+    flex-direction: row;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    max-width: 90%;
+    margin-bottom: 10px;
+    margin-right: 17px;
+    height: 110px;
+    min-height: 110px;
+    align-items: center;
+    white-space: nowrap;
+
+    /* Custom scrollbar styles */
+    scrollbar-width: thin;
+    scrollbar-color: #777 #333;
+}
+.thumbnail {
+    display: inline-block;
+    margin: 5px;
+    cursor: pointer;
+}
+.thumbnail-selected {
+    border: 3px solid #f1c40f;
+    box-sizing: border-box;
+}
+
+#thumbnail-container::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    background-color: #333;
+}
+
+#thumbnail-container::-webkit-scrollbar-thumb {
+    background-color: #777;
+    border-radius: 4px;
+}
+
+body {
+    background-color: #333;
+    color: #fff;
+    display: flex;
+    justify-content: left;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-right: 20px;
+}
+.buttons-group {
+    /* display: flex; */
+    /* flex-direction: column; */
+    gap: 5px;
+    padding-left: 2px;
+    padding-right: 2px;
+    /* border: 1px solid #857f7f; */
+    border-radius: 8px;
+}
+.selected-view {
+    background-color: #444;
+    border: 1px solid #fff;
+}
+.top-grid-container {
+    /* display: grid; */
+    grid-template-columns: repeat(3, 1fr);
+    height: 50px;
+    grid-gap: 10px;
+    margin-bottom: 20px;
+    align-items: center;
+    justify-content: center;
+    /* border: 1px solid #fff; */
+}
+.grid-container {
+    display: flex;
+    grid-template-columns: repeat(3, 150px);
+    height: 50px;
+    grid-gap: 10px;
+    margin-bottom: 10px;
+    margin-top: 10px;
+    margin-right: 20px;
+    align-items: center;
+    justify-content: center;
+}
+.save-path-container {
+    display: flex;
+    align-items: center;
+}
+.wait-cursor {
+    cursor: wait !important;
+}
+
+button {
+    background-color: #555;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    width: 150px;
+    padding: 12px 24px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+
+button:hover {
+    background-color: #777;
+    color: white;
+    padding: 16px 24px;
+    border: 1px solid #fff;
+}
+
+.processing {
+    cursor: wait;
+}
+
+button.processing {
+    background-color: #444;
+    cursor: not-allowed;
+}
+
+input[type="text"] {
+    background-color: #555;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    width: 250px;
+    padding: 12px 24px;
+    margin: 4px 2px;
+    border-radius: 8px;
+    transition-duration: 0.4s;
+}
+
+input[type="text"]:focus {
+    background-color: #777;
+    color: white;
+    padding: 16px 24px;
+    border: 1px solid #fff;
+    outline: none;
+}
+
+.notification {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #4CAF50;
+    color: white;
+    padding: 16px;
+    font-size: 18px;
+    border-radius: 5px;
+    z-index: 1000;
+}
+
+.notification.hide {
+    opacity: 0;
+    transition: opacity 0.5s;
+}
+
+#save-type {
+    background-color: #555;
+    color: white;
+    font-size: 14px;
+    border: none;
+    outline: none;
+    border-radius: 8px;
+    padding: 0 24px;
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    text-indent: 0.01px;
+    text-overflow: "";
+}
+
+#save-dropdown::after {
+    content: "▼";
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 12px;
+    pointer-events: none;
+}
+
+.options-container {
+    display: none;
+    position: absolute;
+    left: 160px;
+    right: 0;
+    top: 5px;
+    width: 150px;
+    border: 1px solid #f1c40f;
+    background-color: #333;
+    border-radius: 8px;
+    z-index: 2;
+}
+
+.option {
+    text-align: center;
+    padding: 8px;
+    cursor: pointer;
+    color: white;
+    font-size: 14px;
+}
+
+.option:hover {
+    background-color: #555;
+    border-radius: 8px;
+}
+
+.option-selected {
+    background-color: #555;
+    border-radius: 8px;
+}
+
+#container-walls{
+    width: 300px;
+    height: 100%;
+    padding: 10px;
+}
+
+#container-walls-top{
+    display: block;
+}
+
+#container-walls-list{
+    display: block;
+}
+
+.container-wall-unit{
+
+}
+
+.container-wall-unit-date{
+    color: yellow;
+}
+
+.container-wall-unit-name{
+    color: chartreuse;
+}
+
+.container-wall-unit-user{
+    color: cyan;
+}
